@@ -7,9 +7,9 @@ import Navigation from './Navigation';
 import SearchBar from '../utils/SearchBar';
 
 const Wrapper = styled.header`
-  background-color: ${props => props.theme.skyblue};
+  background-color: ${props => props.theme.colors.skyblue};
   display: grid;
-  height: ${props => props.theme.header};
+  height: ${props => props.theme.sizes.header};
   grid-template-columns: 2fr 5fr 2fr;
   align-items: center;
   position: fixed;

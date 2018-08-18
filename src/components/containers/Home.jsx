@@ -6,7 +6,7 @@ import Timeline from '../shared/Timeline';
 import Recommendations from '../shared/Recommendations';
 
 const Wrapper = styled.section`
-  margin-top: 4em;
+  margin-top: ${props => props.theme.sizes.header};
 `;
 
 const Home = () => {

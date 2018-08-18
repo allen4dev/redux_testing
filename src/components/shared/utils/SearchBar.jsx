@@ -9,9 +9,9 @@ const Wrapper = styled.form`
 const TextBox = styled.input`
   width: 100%;
   height: 100%;
-  background-color: ${props => props.theme.darkblue};
+  background-color: ${props => props.theme.colors.darkblue};
   border: none;
-  color: ${props => props.theme.white};
+  color: ${props => props.theme.colors.white};
   font-size: 1rem;
   padding: 0;
   text-align: center;

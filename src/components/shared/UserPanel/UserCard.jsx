@@ -10,20 +10,29 @@ const Wrapper = styled.section`
   height: 20vw;
   position: relative;
 `;
+
 const ProfileImage = styled.figure`
   border: 4px solid hotpink;
   height: 50%;
 `;
-const Count = styled.ul`
+
+const Detail = styled.ul`
   border: 4px solid #bada55;
   height: 50%;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
 `;
-const Tweets = styled.li``;
-const Followers = styled.li``;
-const Following = styled.li``;
+
+const Item = styled.li`
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+`;
+
+const Count = styled.span``;
+
+const Value = styled.span``;
 
 const UserCard = () => {
   return (
@@ -34,11 +43,22 @@ const UserCard = () => {
 
       <Information />
 
-      <Count>
-        <Tweets>Tweets count</Tweets>
-        <Followers>Followers count</Followers>
-        <Following>Following count</Following>
-      </Count>
+      <Detail>
+        <Item>
+          <Count>412</Count>
+          <Value>Tweets</Value>
+        </Item>
+
+        <Item>
+          <Count>521</Count>
+          <Value>Followers</Value>
+        </Item>
+
+        <Item>
+          <Count>1242</Count>
+          <Value>Following</Value>
+        </Item>
+      </Detail>
     </Wrapper>
   );
 };

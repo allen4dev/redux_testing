@@ -30,9 +30,9 @@ const spaces = {
 };
 
 const theme = {
-  ...colors,
-  ...spaces,
-  ...sizes,
+  colors: { ...colors },
+  spaces: { ...spaces },
+  sizes: { ...sizes },
 };
 
 // ToDo: add some styles to reset the initial css

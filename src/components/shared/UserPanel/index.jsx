@@ -8,10 +8,10 @@ import Notifications from '../Notifications';
 const Wrapper = styled.section`
   border: 4px solid blue;
   position: fixed;
-  top: 4em;
+  top: ${props => props.theme.sizes.header};
   left: 0;
   width: 25vw;
-  height: calc(100vh - 4em);
+  height: calc(100vh - ${props => props.theme.sizes.header});
 `;
 
 const UserPanel = () => {
