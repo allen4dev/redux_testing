@@ -9,19 +9,26 @@ const List = styled.ul`
   justify-content: space-around;
 `;
 
+const StyledLink = styled(Link)`
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 0.5em;
+`;
+
 const Item = styled.li``;
 
 const Navigation = () => (
   <Wrapper>
     <List>
       <Item>
-        <Link to="/">Home</Link>
+        <StyledLink to="/">Home</StyledLink>
       </Item>
       <Item>
-        <Link to="/">Notifications</Link>
+        <StyledLink to="/">Notifications</StyledLink>
       </Item>
       <Item>
-        <Link to="/">Messages</Link>
+        <StyledLink to="/">Messages</StyledLink>
       </Item>
     </List>
   </Wrapper>

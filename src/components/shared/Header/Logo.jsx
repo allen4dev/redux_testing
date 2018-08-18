@@ -1,17 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
-// import Image from '../utils/Image';
-
-const Wrapper = styled.figure`
+const Wrapper = styled.h1`
+  color: white;
+  font-size: 1.5rem;
   text-align: center;
 `;
 
-const Logo = () => (
-  <Wrapper>
-    {/* <Image /> */}
-    twitter
-  </Wrapper>
-);
+const Logo = () => <Wrapper>twitter</Wrapper>;
 
 export default Logo;
