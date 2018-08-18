@@ -10,7 +10,7 @@ const Wrapper = styled.header`
   background-color: ${props => props.theme.skyblue};
   display: grid;
   height: ${props => props.theme.header};
-  grid-template-columns: 2fr 4fr 2fr;
+  grid-template-columns: 2fr 5fr 2fr;
   align-items: center;
   position: fixed;
   top: 0;
