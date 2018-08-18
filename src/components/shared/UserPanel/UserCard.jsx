@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Information from './Information';
 
 import profileImage from '../../../defaultImages/profileImage2.jpg';
+import avatar from '../../../defaultImages/avatar.jpg';
 
 const Wrapper = styled.section`
   height: 20vw;
@@ -20,6 +21,7 @@ const ProfileImage = styled.div`
 
 const Detail = styled.ul`
   height: 50%;
+  padding-bottom: ${props => props.theme.spaces.xsmall};
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -36,6 +38,7 @@ const Count = styled.span`
   color: ${props => props.theme.colors.darkgray};
   font-weight: bold;
   font-size: ${props => props.theme.spaces.normal};
+  margin-bottom: ${props => props.theme.spaces.xsmall};
 `;
 
 const Value = styled.span`
@@ -44,12 +47,23 @@ const Value = styled.span`
   text-transform: uppercase;
 `;
 
+const user = {
+  profileImage,
+  avatar,
+  fullname: 'Allen Walker',
+  username: '@allen',
+};
+
 const UserCard = () => {
   return (
     <Wrapper>
-      <ProfileImage url={profileImage} />
+      <ProfileImage url={user.profileImage} />
 
-      <Information />
+      <Information
+        avatar={user.avatar}
+        fullname={user.fullname}
+        username={user.username}
+      />
 
       <Detail>
         <Item>
