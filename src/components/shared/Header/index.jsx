@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Logo from './Logo';
 import Navigation from './Navigation';
 
-import SearchBar from '../utils/SearchBar';
+import SearchBar from 'components/shared/utils/SearchBar';
 
 const Wrapper = styled.header`
   background-color: ${props => props.theme.colors.skyblue};

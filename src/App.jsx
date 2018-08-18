@@ -2,11 +2,11 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
-import Home from './components/containers/Home';
+import Home from 'components/containers/Home';
 
-import Header from './components/shared/Header';
+import Header from 'components/shared/Header';
 
-import theme from './theme';
+import theme from 'theme';
 
 const App = () => (
   <ThemeProvider theme={theme}>

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Avatar from '../utils/Avatar';
+import Avatar from 'components/shared/utils/Avatar';
 
 const Wrapper = styled.section`
   position: absolute;

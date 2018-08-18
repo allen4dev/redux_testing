@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import UserCard from './UserCard';
 
-import Notifications from '../Notifications';
+import Notifications from 'components/shared/Notifications';
 
 const Wrapper = styled.section`
   position: fixed;

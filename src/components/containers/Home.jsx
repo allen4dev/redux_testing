@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import UserPanel from '../shared/UserPanel';
-import Timeline from '../shared/Timeline';
-import Recommendations from '../shared/Recommendations';
+import UserPanel from 'components/shared/UserPanel';
+import Timeline from 'components/shared/Timeline';
+import Recommendations from 'components/shared/Recommendations';
 
 const Wrapper = styled.section`
   margin-top: ${props => props.theme.sizes.header};

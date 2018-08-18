@@ -3,8 +3,8 @@ import styled from 'styled-components';
 
 import Information from './Information';
 
-import profileImage from '../../../defaultImages/profileImage2.jpg';
-import avatar from '../../../defaultImages/avatar.jpg';
+import profileImage from 'defaultImages/profileImage2.jpg';
+import avatar from 'defaultImages/avatar.jpg';
 
 const Wrapper = styled.section`
   height: 20vw;
