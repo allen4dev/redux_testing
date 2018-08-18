@@ -1,45 +1,26 @@
 import React from 'react';
-import { Route, Link } from 'react-router-dom';
+import { Route } from 'react-router-dom';
+import { ThemeProvider } from 'styled-components';
 
 import Home from './components/containers/Home';
 
+import Header from './components/shared/Header';
+
+const theme = {
+  backgroundColor: '#bada55',
+};
+
 const App = () => {
   return (
-    <main className="App">
-      <header className="Header">
-        <figure className="Logo">
-          <img src="" alt="twitter" className="Logo-image" />
-        </figure>
+    <ThemeProvider theme={theme}>
+      <main className="App">
+        <Header />
 
-        <nav className="Navigation">
-          <ul className="Navigation-list">
-            <li className="Navigation-item">
-              <Link to="/">Home</Link>
-            </li>
-            <li className="Navigation-item">
-              <Link to="/notifications">Notifications</Link>
-            </li>
-            <li className="Navigation-item">
-              <Link to="/messages">Messages</Link>
-            </li>
-          </ul>
-        </nav>
-
-        <form className="Searchbar">
-          <input type="text" className="Searchbar-input" />
-        </form>
-
-        <div className="Header-user">
-          <figure className="Avatar">
-            <img src="" alt="avatar" className="Avatar-img" />
-          </figure>
+        <div>
+          <Route exact path="/" component={Home} />
         </div>
-      </header>
-
-      <div>
-        <Route exact path="/" component={Home} />
-      </div>
-    </main>
+      </main>
+    </ThemeProvider>
   );
 };
 
