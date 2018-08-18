@@ -6,7 +6,6 @@ import UserCard from './UserCard';
 import Notifications from '../Notifications';
 
 const Wrapper = styled.section`
-  border: 4px solid blue;
   position: fixed;
   top: ${props => props.theme.sizes.header};
   left: 0;

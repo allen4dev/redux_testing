@@ -3,21 +3,22 @@ import styled from 'styled-components';
 
 import Information from './Information';
 
-import Image from '../utils/Image';
+import profileImage from '../../../defaultImages/profileImage2.jpg';
 
 const Wrapper = styled.section`
-  border: 4px solid darkred;
   height: 20vw;
   position: relative;
 `;
 
-const ProfileImage = styled.figure`
-  border: 4px solid hotpink;
+const ProfileImage = styled.div`
   height: 50%;
+  background-image: ${props => `url(${props.url})`};
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 `;
 
 const Detail = styled.ul`
-  border: 4px solid #bada55;
   height: 50%;
   display: flex;
   justify-content: space-between;
@@ -25,21 +26,28 @@ const Detail = styled.ul`
 `;
 
 const Item = styled.li`
+  padding: ${props => props.theme.spaces.xsmall};
   display: flex;
   flex-direction: column;
   text-align: center;
 `;
 
-const Count = styled.span``;
+const Count = styled.span`
+  color: ${props => props.theme.colors.darkgray};
+  font-weight: bold;
+  font-size: ${props => props.theme.spaces.normal};
+`;
 
-const Value = styled.span``;
+const Value = styled.span`
+  font-size: ${props => props.theme.spaces.small};
+  color: ${props => props.theme.colors.lightgray};
+  text-transform: uppercase;
+`;
 
 const UserCard = () => {
   return (
     <Wrapper>
-      <ProfileImage>
-        <Image />
-      </ProfileImage>
+      <ProfileImage url={profileImage} />
 
       <Information />
 

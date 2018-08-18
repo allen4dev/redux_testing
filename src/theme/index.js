@@ -23,9 +23,9 @@ const colors = {
   darkblue: '#39c6e2',
   white: '#ffffff',
   black: '##2f2f2e',
-  lightgray: '#f8f8f8',
-  gray: '#eeeeee',
-  darkgray: '#bbbbbb',
+  lightgray: '#999999',
+  gray: '#bbbbbb',
+  darkgray: '#555555',
 };
 
 const sizes = {
