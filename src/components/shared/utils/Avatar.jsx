@@ -8,11 +8,12 @@ const Wrapper = styled.figure`
   border-radius: 50%;
   overflow: hidden;
   font-size: 0;
+  width: ${props => props.width};
 `;
 
-const Avatar = ({ src }) => {
+const Avatar = ({ src, width }) => {
   return (
-    <Wrapper>
+    <Wrapper width={width}>
       <Image src={src} />
     </Wrapper>
   );

@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import SearchBar from 'components/shared/utils/SearchBar';
+
 import Logo from './Logo';
 import Navigation from './Navigation';
-
-import SearchBar from 'components/shared/utils/SearchBar';
 
 const Wrapper = styled.header`
   background-color: ${props => props.theme.colors.skyblue};
