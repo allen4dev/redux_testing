@@ -6,6 +6,7 @@ import Avatar from 'components/shared/utils/Avatar';
 import src from 'defaultImages/avatar.jpg';
 
 const Wrapper = styled.div`
+  background-color: white;
   padding: 0 ${props => props.theme.spaces.normal};
   height: 4rem;
   width: 50vw;
