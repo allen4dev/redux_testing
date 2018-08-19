@@ -23,7 +23,7 @@ const colors = {
   darkblue: '#39c6e2',
   white: '#ffffff',
   black: '##2f2f2e',
-  lightgray: '#999999',
+  lightgray: '#eeeeee',
   gray: '#bbbbbb',
   darkgray: '#555555',
 };

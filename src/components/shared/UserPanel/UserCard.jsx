@@ -43,7 +43,7 @@ const Count = styled.span`
 
 const Value = styled.span`
   font-size: ${props => props.theme.spaces.small};
-  color: ${props => props.theme.colors.lightgray};
+  color: ${props => props.theme.colors.gray};
   text-transform: uppercase;
 `;
 
