@@ -7,7 +7,7 @@ const Wrapper = styled.section`
   background-color: ${props => props.theme.colors.lightgray}
   margin-left: 25vw;
   padding: ${props => props.theme.spaces.normal};
-  width: 50vw;
+  width: calc(50vw - ${props => props.theme.spaces.normal});
 `;
 
 const Timeline = () => {

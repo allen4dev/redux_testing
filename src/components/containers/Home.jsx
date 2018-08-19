@@ -16,7 +16,7 @@ const Home = () => {
       <UserPanel />
       <TweetBar />
       <Timeline />
-      <Aside />
+      <Aside position="fixed" top="3rem" />
     </Wrapper>
   );
 };

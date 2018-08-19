@@ -22,7 +22,7 @@ const colors = {
   skyblue: '#3aceec',
   darkblue: '#39c6e2',
   white: '#ffffff',
-  black: '##2f2f2e',
+  black: '#2f2f2e',
   lightgray: '#eeeeee',
   gray: '#bbbbbb',
   darkgray: '#555555',

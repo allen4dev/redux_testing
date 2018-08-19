@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
 import Home from 'components/containers/Home';
+import Profile from 'components/containers/Profile';
 
 import Header from 'components/shared/Header';
 
@@ -15,6 +16,7 @@ const App = () => (
 
       <div>
         <Route exact path="/" component={Home} />
+        <Route path="/users/:id" component={Profile} />
       </div>
     </main>
   </ThemeProvider>
