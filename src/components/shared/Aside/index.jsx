@@ -1,8 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Wrapper = styled.section`
-  border: 4px solid #bada55;
+import Recommendations from './Recommendations';
+import Trending from './Trending';
+
+const Wrapper = styled.aside`
   position: fixed;
   top: ${props => props.theme.sizes.header};
   right: 0;
@@ -10,12 +12,13 @@ const Wrapper = styled.section`
   height: calc(100vh - ${props => props.theme.sizes.header});
 `;
 
-const Recommendations = () => {
+const Aside = () => {
   return (
     <Wrapper>
-      <h1>Recommendations</h1>
+      <Recommendations />
+      <Trending />
     </Wrapper>
   );
 };
 
-export default Recommendations;
+export default Aside;

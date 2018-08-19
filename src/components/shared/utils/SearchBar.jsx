@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Wrapper = styled.form`
-  width: 100%;
+  width: 25vw;
   height: 100%;
 `;
 
