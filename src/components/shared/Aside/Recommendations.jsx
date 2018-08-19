@@ -3,9 +3,7 @@ import styled from 'styled-components';
 
 import UserList from 'components/shared/users/UserList';
 
-const Wrapper = styled.section`
-  box-shadow: 0 0 1px ${props => props.theme.colors.gray};
-`;
+const Wrapper = styled.section``;
 
 const Title = styled.h2`
   font-size: 1.2rem;

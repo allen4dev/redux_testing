@@ -5,6 +5,7 @@ import Recommendations from './Recommendations';
 import Trending from './Trending';
 
 const Wrapper = styled.aside`
+  box-shadow: 0 0 1px ${props => props.theme.colors.gray};
   position: fixed;
   top: ${props => props.theme.sizes.header};
   right: 0;

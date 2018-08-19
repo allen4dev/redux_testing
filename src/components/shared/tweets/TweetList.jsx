@@ -23,6 +23,14 @@ const TweetList = () => {
       <TweetCard>
         <Tweet />
       </TweetCard>
+
+      <TweetCard>
+        <Tweet />
+      </TweetCard>
+
+      <TweetCard>
+        <Tweet />
+      </TweetCard>
     </Wrapper>
   );
 };
