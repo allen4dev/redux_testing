@@ -8,7 +8,6 @@ import Avatar from 'components/shared/utils/Avatar';
 import avatar from 'defaultImages/avatar.jpg';
 
 const TweetLink = styled(Link)`
-  background-color: ${props => props.theme.colors.white};
   padding: ${props => props.theme.spaces.xsmall};
   text-decoration: none;
   display: flex;
@@ -57,8 +56,6 @@ const Tweet = () => {
         <Body>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit
           reiciendis, illo natus labore adipisci in repellat obcaecati eius,
-          consectetur quasi possimus quae, ad nihil est fugiat! Soluta quis
-          vitae recusandae.
         </Body>
       </Content>
     </TweetLink>
