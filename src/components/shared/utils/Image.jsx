@@ -3,8 +3,8 @@ import styled from 'styled-components';
 
 const Wrapper = styled.img`
   background-image: ${props => props.url};
+  display: block;
   max-width: 100%;
-  font-size: ${props => props.theme.spaces.normal};
 `;
 
 const Image = ({ src }) => {

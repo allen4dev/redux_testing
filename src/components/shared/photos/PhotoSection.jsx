@@ -3,14 +3,18 @@ import styled from 'styled-components';
 
 import PhotoList from './PhotoList';
 
-const Wrapper = styled.section``;
-const Title = styled.h2``;
+const Wrapper = styled.section`
+  padding: 0 1.5rem;
+`;
+const Title = styled.h2`
+  padding: 1rem 0;
+`;
 
 const PhotoSection = () => {
   return (
     <Wrapper>
       <Title>Photos</Title>
-      <PhotoList />
+      <PhotoList width="75px" />
     </Wrapper>
   );
 };

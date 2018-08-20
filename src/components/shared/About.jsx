@@ -2,11 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Wrapper = styled.section`
-  padding: 5rem 1rem 1rem;
+  padding: 5rem 1.5rem 1.5rem;
 `;
 
 const Title = styled.h2`
-  font-size: 1rem;
   padding: 1rem 0;
 `;
 

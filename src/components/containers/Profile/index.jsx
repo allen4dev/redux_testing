@@ -16,6 +16,8 @@ const Wrapper = styled.section`
 `;
 
 const TweetSection = styled.section`
+  background-color: ${props => props.theme.colors.lightgray};
+  padding: 1rem;
   grid-area: tweets;
 `;
 

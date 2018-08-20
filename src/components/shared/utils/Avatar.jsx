@@ -7,7 +7,6 @@ const Wrapper = styled.figure`
   border: 2px solid ${props => props.theme.colors.white};
   border-radius: 50%;
   overflow: hidden;
-  font-size: 0;
   width: ${props => props.width};
 `;
 
