@@ -9,4 +9,5 @@ export default {
   actionTypes,
   constants,
   model,
+  reducer,
 };

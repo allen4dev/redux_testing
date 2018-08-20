@@ -1,1 +1,9 @@
-// combine the modules reducers here
+import { combineReducers } from 'redux';
+
+import users from './users';
+
+const rootReducer = combineReducers({
+  [users.constants.NAME]: users.reducer,
+});
+
+export default rootReducer;
