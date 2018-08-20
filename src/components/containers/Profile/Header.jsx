@@ -1,24 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import TweetList from 'components/shared/tweets/TweetList';
-import Aside from 'components/shared/Aside';
 import Avatar from 'components/shared/utils/Avatar';
 
 import avatar from 'defaultImages/avatar.jpg';
 import profileImage from 'defaultImages/profileImage.jpg';
 
-const Wrapper = styled.section`
-  border: 4px solid red;
-  margin-top: ${props => props.theme.sizes.header};
-  display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
-  grid-template-areas:
-    'heading heading heading'
-    'details tweets .';
-`;
-
-const Header = styled.header`
+const Wrapper = styled.header`
   background-image: ${props => `url(${props.profileImage})`};
   background-size: cover;
   background-position: center;
@@ -28,15 +16,6 @@ const Header = styled.header`
   display: grid;
   grid-template-columns: 2fr 4fr 2fr;
   grid-template-rows: 1fr 1fr;
-`;
-
-const Details = styled.section`
-  background-color: hotpink;
-  grid-area: details;
-`;
-
-const TweetSection = styled.section`
-  grid-area: tweets;
 `;
 
 const AvatarSection = styled.div`
@@ -74,6 +53,7 @@ const Actions = styled.div`
   }
 `;
 
+// ! Potential reusable component, move to his own file
 const Button = styled.button`
   color: ${props =>
     props.blue ? props.theme.colors.white : props.theme.colors.darkgray};
@@ -129,49 +109,42 @@ const Value = styled.span`
   text-transform: uppercase;
 `;
 
-const Profile = () => {
+const Header = () => {
   return (
-    <Wrapper>
-      <Header profileImage={profileImage}>
-        <AvatarSection>
-          <AvatarContainer>
-            <Avatar src={avatar} />
-          </AvatarContainer>
-        </AvatarSection>
-        <Information>
-          <Heading>
-            <Fullname>Allen Walker</Fullname>
-            <Username>@allen</Username>
-          </Heading>
-          <List>
-            <Item>
-              <Count>124</Count>
-              <Value>Tweets</Value>
-            </Item>
+    <Wrapper profileImage={profileImage}>
+      <AvatarSection>
+        <AvatarContainer>
+          <Avatar src={avatar} />
+        </AvatarContainer>
+      </AvatarSection>
+      <Information>
+        <Heading>
+          <Fullname>Allen Walker</Fullname>
+          <Username>@allen</Username>
+        </Heading>
+        <List>
+          <Item>
+            <Count>124</Count>
+            <Value>Tweets</Value>
+          </Item>
 
-            <Item>
-              <Count>463</Count>
-              <Value>Followers</Value>
-            </Item>
+          <Item>
+            <Count>463</Count>
+            <Value>Followers</Value>
+          </Item>
 
-            <Item>
-              <Count>924</Count>
-              <Value>Following</Value>
-            </Item>
-          </List>
-        </Information>
-        <Actions>
-          <Button>Message</Button>
-          <Button blue>Follow</Button>
-        </Actions>
-      </Header>
-      <Details />
-      <TweetSection>
-        <TweetList />
-      </TweetSection>
-      <Aside />
+          <Item>
+            <Count>924</Count>
+            <Value>Following</Value>
+          </Item>
+        </List>
+      </Information>
+      <Actions>
+        <Button>Message</Button>
+        <Button blue>Follow</Button>
+      </Actions>
     </Wrapper>
   );
 };
 
-export default Profile;
+export default Header;
