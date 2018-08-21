@@ -1,8 +1,8 @@
 import * as actionTypes from './actionTypes';
 
-export function actionCreator() {
+export function setCurrentUser(user) {
   return {
-    type: actionTypes.TYPE,
-    payload: 'hey',
+    type: actionTypes.SET_CURRENT_USER,
+    payload: { id: user.id },
   };
 }
