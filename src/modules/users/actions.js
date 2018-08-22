@@ -32,7 +32,7 @@ export function login(email, password) {
 
 export function register(information) {
   return async dispatch => {
-    const { data: results } = await api.auth.login(information);
+    const { data: results } = await api.auth.register(information);
 
     dispatch(setCurrentUser(results.data.id));
     dispatch(setToken(results.data.token));

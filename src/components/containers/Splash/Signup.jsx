@@ -70,6 +70,7 @@ class Signup extends Component {
   state = {
     email: '',
     password: '',
+    username: '',
   };
 
   handleInputChange = e => {
@@ -80,10 +81,15 @@ class Signup extends Component {
   handleSubmit = e => {
     e.preventDefault();
 
-    const { login } = this.props;
-    const { email, password } = this.state;
+    const { login, register } = this.props;
+    const { email, password, username } = this.state;
 
-    login(email, password);
+    // ToDo: Replace the if/else
+    if (!username) {
+      login(email, password);
+    } else {
+      register({ username, email, password });
+    }
 
     console.log('Redirect to / or intended');
   };
@@ -118,7 +124,12 @@ class Signup extends Component {
 
           <Separator>Or</Separator>
 
-          <Input placeholder="Enter Full Name" />
+          <Input
+            name="username"
+            value={this.state.username}
+            placeholder="Username"
+            onChange={this.handleInputChange}
+          />
           <Button flexible>Sign Up for twitter</Button>
         </Form>
       </Wrapper>
@@ -133,6 +144,9 @@ function mapStateToProps(state) {
 export default withRouter(
   connect(
     mapStateToProps,
-    { login: users.actions.login },
+    {
+      login: users.actions.login,
+      register: users.actions.register,
+    },
   )(Signup),
 );
