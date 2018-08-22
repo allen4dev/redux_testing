@@ -15,6 +15,12 @@ const api = {
 
       return response;
     },
+
+    async register(details) {
+      const response = await instance.post('auth/register', details);
+
+      return response;
+    },
   },
 };
 

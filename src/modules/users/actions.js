@@ -29,3 +29,14 @@ export function login(email, password) {
     return results.data.token;
   };
 }
+
+export function register(information) {
+  return async dispatch => {
+    const { data: results } = await api.auth.login(information);
+
+    dispatch(setCurrentUser(results.data.id));
+    dispatch(setToken(results.data.token));
+
+    return results.data.token;
+  };
+}

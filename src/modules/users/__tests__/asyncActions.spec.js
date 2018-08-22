@@ -28,7 +28,7 @@ describe('users module async actions', () => {
       const request = moxios.requests.mostRecent();
 
       request.respondWith({
-        status: 201,
+        status: 200,
         response: { data: { id: user.id, token } },
       });
     });
@@ -47,6 +47,48 @@ describe('users module async actions', () => {
     const store = mockStore(INITIAL_STATE);
 
     await store.dispatch(actions.login(user.email, user.password));
+
+    expect(store.getActions()).toEqual(expectedActions);
+  });
+
+  it('should create a SET_TOKEN and SET_CURRENT_USER  action after a successful registration', async () => {
+    const token = 'xxx-xxx-xxx';
+    const id = '1';
+    const user = {
+      username: 'allen',
+      email: 'allen@example.test',
+      password: 'secret',
+    };
+
+    moxios.wait(() => {
+      const request = moxios.requests.mostRecent();
+
+      request.respondWith({
+        status: 201,
+        response: { data: { id, token } },
+      });
+    });
+
+    const expectedActions = [
+      {
+        type: actionTypes.SET_CURRENT_USER,
+        payload: { id },
+      },
+      {
+        type: actionTypes.SET_TOKEN,
+        payload: { token },
+      },
+    ];
+
+    const store = mockStore(INITIAL_STATE);
+
+    await store.dispatch(
+      actions.register({
+        username: user.username,
+        email: user.email,
+        password: user.password,
+      }),
+    );
 
     expect(store.getActions()).toEqual(expectedActions);
   });
