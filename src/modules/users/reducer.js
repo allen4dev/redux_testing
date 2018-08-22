@@ -11,6 +11,12 @@ function currentReducer(state = INITIAL_STATE.current, action) {
         id: action.payload.id,
       };
 
+    case actionTypes.SET_TOKEN:
+      return {
+        ...state,
+        token: action.payload.token,
+      };
+
     default:
       return state;
   }

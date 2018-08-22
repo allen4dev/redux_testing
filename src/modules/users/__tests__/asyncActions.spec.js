@@ -9,7 +9,7 @@ import { INITIAL_STATE } from '../model';
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
-xdescribe('users module async actions', () => {
+describe('users module async actions', () => {
   beforeEach(function() {
     moxios.install();
   });

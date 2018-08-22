@@ -20,7 +20,7 @@ export function setToken(token) {
 // Async action creators
 
 export function login() {
-  return async (getState, dispatch) => {
+  return async (dispatch, getState) => {
     const { data: results } = await api.auth.login();
 
     dispatch(setCurrentUser(results.data.id));
