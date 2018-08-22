@@ -23,9 +23,7 @@ describe('current', () => {
 
   it('should handle SET_TOKEN action', () => {
     const token = 'xxx-xxx-xxx';
-
     const nextState = reducer(INITIAL_STATE, actions.setToken(token));
-
     expect(nextState).toEqual({
       ...INITIAL_STATE,
       current: {

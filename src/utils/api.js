@@ -1,13 +1,17 @@
 import axios from 'axios';
 
-const baseURL = 'localhost:8000/api';
+export const instance = axios.create({
+  baseURL: 'http://localhost:8000/api/',
+  headers: {
+    'Content-Type': 'application/json',
+    Accept: 'application/json',
+  },
+});
 
 const api = {
   auth: {
-    async login() {
-      const url = `${baseURL}/auth/login`;
-
-      const response = await axios.get(url);
+    async login(credentials) {
+      const response = await instance.post('auth/login', credentials);
 
       return response;
     },

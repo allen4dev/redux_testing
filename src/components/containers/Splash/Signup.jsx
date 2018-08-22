@@ -1,5 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
+
+import users from 'modules/users';
 
 const Wrapper = styled.section`
   background-color: rgba(0, 0, 0, 0.5);
@@ -52,6 +56,7 @@ const Separator = styled.div`
   text-transform: uppercase;
 `;
 const CheckBox = styled.div``;
+
 const Button = styled.button`
   color: white;
   background-color: ${props =>
@@ -61,27 +66,73 @@ const Button = styled.button`
   width: ${props => (props.flexible ? '100%' : 'auto')};
 `;
 
-const Signup = () => {
-  return (
-    <Wrapper>
-      <Header>
-        <Title>Welcome to twitter</Title>
-        <Text>Get in-the-moment updates on the things that interest you</Text>
-      </Header>
+class Signup extends Component {
+  state = {
+    email: '',
+    password: '',
+  };
 
-      <Form>
-        <Input placeholder="Username" />
-        <Input placeholder="Password" type="password" />
-        <Options>
-          <CheckBox>Remember Me</CheckBox>
-          <Button flat>Signin</Button>
-        </Options>
-        <Separator>Or</Separator>
-        <Input placeholder="Enter Full Name" />
-        <Button flexible>Sign Up for twitter</Button>
-      </Form>
-    </Wrapper>
-  );
-};
+  handleInputChange = e => {
+    const { name, value } = e.target;
+    this.setState({ [name]: value });
+  };
 
-export default Signup;
+  handleSubmit = e => {
+    e.preventDefault();
+
+    const { login } = this.props;
+    const { email, password } = this.state;
+
+    login(email, password);
+
+    console.log('Redirect to / or intended');
+  };
+
+  render() {
+    return (
+      <Wrapper>
+        <Header>
+          <Title>Welcome to twitter</Title>
+          <Text>Get in-the-moment updates on the things that interest you</Text>
+        </Header>
+
+        <Form onSubmit={this.handleSubmit}>
+          <Input
+            name="email"
+            value={this.state.email}
+            placeholder="Email"
+            type="text"
+            onChange={this.handleInputChange}
+          />
+          <Input
+            name="password"
+            value={this.state.password}
+            placeholder="Password"
+            type="password"
+            onChange={this.handleInputChange}
+          />
+          <Options>
+            <CheckBox>Remember Me</CheckBox>
+            <Button flat>Signin</Button>
+          </Options>
+
+          <Separator>Or</Separator>
+
+          <Input placeholder="Enter Full Name" />
+          <Button flexible>Sign Up for twitter</Button>
+        </Form>
+      </Wrapper>
+    );
+  }
+}
+
+function mapStateToProps(state) {
+  return {};
+}
+
+export default withRouter(
+  connect(
+    mapStateToProps,
+    { login: users.actions.login },
+  )(Signup),
+);

@@ -19,9 +19,9 @@ export function setToken(token) {
 
 // Async action creators
 
-export function login() {
-  return async (dispatch, getState) => {
-    const { data: results } = await api.auth.login();
+export function login(email, password) {
+  return async dispatch => {
+    const { data: results } = await api.auth.login({ email, password });
 
     dispatch(setCurrentUser(results.data.id));
     dispatch(setToken(results.data.token));
