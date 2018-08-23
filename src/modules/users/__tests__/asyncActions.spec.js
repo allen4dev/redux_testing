@@ -143,7 +143,15 @@ describe('users module async actions', () => {
       },
     ];
 
-    const store = mockStore(INITIAL_STATE);
+    const store = mockStore({
+      users: {
+        ...INITIAL_STATE,
+        current: {
+          ...INITIAL_STATE.current,
+          token,
+        },
+      },
+    });
 
     await store.dispatch(actions.fetchTimeline(token));
 
