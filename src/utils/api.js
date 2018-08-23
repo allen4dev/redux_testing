@@ -25,7 +25,9 @@ const api = {
 
   tweets: {
     async fetchTimeline(token) {
-      const response = await instance.get('me/timeline');
+      const response = await instance.get('me/timeline', {
+        headers: { Authorization: `Bearer ${token}` },
+      });
 
       return response;
     },

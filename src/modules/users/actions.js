@@ -60,7 +60,7 @@ export function fetchTimeline() {
   return async (dispatch, getState) => {
     dispatch(requestTimeline());
 
-    const { token } = getState().current;
+    const { token } = getState().users.current;
 
     const { data: results } = await api.tweets.fetchTimeline(token);
 

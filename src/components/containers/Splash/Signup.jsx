@@ -78,20 +78,20 @@ class Signup extends Component {
     this.setState({ [name]: value });
   };
 
-  handleSubmit = e => {
+  handleSubmit = async e => {
     e.preventDefault();
 
-    const { login, register } = this.props;
+    const { login, register, history } = this.props;
     const { email, password, username } = this.state;
 
     // ToDo: Replace the if/else
     if (!username) {
-      login(email, password);
+      await login(email, password);
     } else {
-      register({ username, email, password });
+      await register({ username, email, password });
     }
 
-    console.log('Redirect to / or intended');
+    history.push('/');
   };
 
   render() {

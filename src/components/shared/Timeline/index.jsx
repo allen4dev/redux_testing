@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 
 import TweetList from 'components/shared/tweets/TweetList';
+
+import usersModule from 'modules/users';
 
 const Wrapper = styled.section`
   background-color: ${props => props.theme.colors.lightgray}
@@ -10,12 +13,37 @@ const Wrapper = styled.section`
   width: calc(50vw - ${props => props.theme.spaces.normal});
 `;
 
-const Timeline = () => {
-  return (
-    <Wrapper>
-      <TweetList />
-    </Wrapper>
-  );
-};
+class Timeline extends Component {
+  async componentDidMount() {
+    const { timeline, fetchTimeline } = this.props;
 
-export default Timeline;
+    if (timeline.length === 0) {
+      await fetchTimeline();
+    }
+  }
+
+  render() {
+    return (
+      <Wrapper>
+        <TweetList />
+        {this.props.loading && <h1>Loading...</h1>}
+      </Wrapper>
+    );
+  }
+}
+
+function mapStateToProps(state) {
+  const { timeline, loading } = state.users.current;
+
+  return {
+    loading,
+    timeline,
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  {
+    fetchTimeline: usersModule.actions.fetchTimeline,
+  },
+)(Timeline);
