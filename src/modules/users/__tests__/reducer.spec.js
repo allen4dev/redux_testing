@@ -2,8 +2,6 @@ import reducer from '../reducer';
 import * as actions from '../actions';
 import { INITIAL_STATE } from '../model';
 
-import tweetsModule from 'modules/tweets';
-
 test('@INIT', () => {
   expect(reducer(undefined, {})).toEqual(INITIAL_STATE);
 });
