@@ -9,28 +9,15 @@ const Wrapper = styled.section`
   grid-gap: 1em;
 `;
 
-const TweetList = () => {
+const TweetList = ({ tweets }) => {
+  console.log(tweets);
   return (
     <Wrapper>
-      <TweetCard>
-        <Tweet />
-      </TweetCard>
-
-      <TweetCard>
-        <Tweet />
-      </TweetCard>
-
-      <TweetCard>
-        <Tweet />
-      </TweetCard>
-
-      <TweetCard>
-        <Tweet />
-      </TweetCard>
-
-      <TweetCard>
-        <Tweet />
-      </TweetCard>
+      {tweets.map(tweet => (
+        <TweetCard key={tweet}>
+          <Tweet id={tweet} />
+        </TweetCard>
+      ))}
     </Wrapper>
   );
 };

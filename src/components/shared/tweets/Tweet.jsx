@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import styled from 'styled-components';
@@ -42,24 +43,31 @@ const Body = styled.p`
   color: ${props => props.theme.colors.black};
 `;
 
-const Tweet = () => {
-  return (
-    <TweetLink to="/tweets/1">
-      <Avatar src={avatar} width="70px" />
-      <Content>
-        <Heading>
-          <StyledLink to="/users/1">
-            <Fullname>Allen Walker</Fullname>
-            <Username>@allen</Username>
-          </StyledLink>
-        </Heading>
-        <Body>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit
-          reiciendis, illo natus labore adipisci in repellat obcaecati eius,
-        </Body>
-      </Content>
-    </TweetLink>
-  );
-};
+class Tweet extends Component {
+  render() {
+    const { tweet } = this.props;
 
-export default Tweet;
+    return (
+      <TweetLink to={`/tweets/${tweet.id}`}>
+        <Avatar src={avatar} width="70px" />
+        <Content>
+          <Heading>
+            <StyledLink to="/users/1">
+              <Fullname>Allen Walker</Fullname>
+              <Username>@allen</Username>
+            </StyledLink>
+          </Heading>
+          <Body>{tweet.attributes.body}</Body>
+        </Content>
+      </TweetLink>
+    );
+  }
+}
+
+function mapStateToProps(state, { id }) {
+  return {
+    tweet: state.tweets.entities[id],
+  };
+}
+
+export default connect(mapStateToProps)(Tweet);

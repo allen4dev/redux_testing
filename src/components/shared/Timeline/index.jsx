@@ -25,8 +25,7 @@ class Timeline extends Component {
   render() {
     return (
       <Wrapper>
-        <TweetList />
-        {this.props.loading && <h1>Loading...</h1>}
+        <TweetList tweets={this.props.timeline} />
       </Wrapper>
     );
   }

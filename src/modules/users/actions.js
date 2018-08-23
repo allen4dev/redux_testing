@@ -67,8 +67,8 @@ export function fetchTimeline() {
     const tweets = convertResults(results);
     const ids = Object.keys(tweets);
 
-    dispatch(addTweets(ids));
     dispatch(tweetsModule.actions.addTweets(tweets));
+    dispatch(addTweets(ids));
 
     return tweets;
   };
