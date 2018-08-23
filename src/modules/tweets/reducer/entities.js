@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 
-import * as actionTypes from './actionTypes';
-import { INITIAL_STATE } from './model';
+import * as actionTypes from '../actionTypes';
+import { INITIAL_STATE } from '../model';
 
 function entitiesReducer(state = INITIAL_STATE.entities, action) {
   switch (action.type) {
@@ -16,8 +16,4 @@ function entitiesReducer(state = INITIAL_STATE.entities, action) {
   }
 }
 
-const reducer = combineReducers({
-  entities: entitiesReducer,
-});
-
-export default reducer;
+export default entitiesReducer;

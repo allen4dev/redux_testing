@@ -1,8 +1,8 @@
-import reducer from '../reducers';
+import reducer from '../reducer';
 import * as actions from '../actions';
 import { INITIAL_STATE } from '../model';
 
-import currentReducer from '../reducers/current';
+import currentReducer from '../reducer/current';
 
 test('@INIT', () => {
   expect(reducer(undefined, {})).toEqual(INITIAL_STATE);

@@ -2,22 +2,29 @@ import reducer from '../reducer';
 import * as actions from '../actions';
 import { INITIAL_STATE } from '../model';
 
+import entitiesReducer from '../reducer/entities';
+
 test('@INIT', () => {
   expect(reducer(undefined, {})).toEqual(INITIAL_STATE);
 });
 
 describe('entities', () => {
+  const ENTITIES_STATE = INITIAL_STATE.entities;
+
   it('should handle ADD_TWEETS action', () => {
     const tweets = {
       '1': { attributes: { body: 'Tweet 1' } },
       '2': { attributes: { body: 'Tweet 2' } },
     };
 
-    const nextState = reducer(INITIAL_STATE, actions.addTweets(tweets));
+    const nextState = entitiesReducer(
+      ENTITIES_STATE,
+      actions.addTweets(tweets),
+    );
 
     expect(nextState).toEqual({
-      ...INITIAL_STATE,
-      entities: tweets,
+      ...ENTITIES_STATE,
+      ...tweets,
     });
 
     const newTweets = {
@@ -25,14 +32,12 @@ describe('entities', () => {
       '4': { attributes: { body: 'Tweet 4' } },
     };
 
-    const newState = reducer(nextState, actions.addTweets(newTweets));
+    const newState = entitiesReducer(nextState, actions.addTweets(newTweets));
 
     expect(newState).toEqual({
-      ...INITIAL_STATE,
-      entities: {
-        ...tweets,
-        ...newTweets,
-      },
+      ...ENTITIES_STATE,
+      ...tweets,
+      ...newTweets,
     });
   });
 });
