@@ -92,4 +92,48 @@ describe('users module async actions', () => {
 
     expect(store.getActions()).toEqual(expectedActions);
   });
+
+  xit('should create a FETCH_TIMELINE, ADD_TWEETS actions after the user fetch his timeline', async () => {
+    // Given we have a valid token to identify us
+    const token = 'xxx-xxx-xxx';
+    const response = {
+      data: {
+        type: 'tweets',
+        id: '1',
+        attributes: {
+          body: 'I am making a Twitter redesign',
+        },
+      },
+    };
+
+    // When someone fetchs his timeline
+    moxios.wait(() => {
+      const request = moxios.requests.mostRecent();
+
+      request.respondWith({
+        status: 200,
+        response,
+      });
+    });
+
+    // Then we expect an action with type FETCH_TIMELINE and a value of true
+    // and other with a type ADD_TWEETS and a value with the fetched tweets
+    // to be dispatched
+    const expectedActions = [
+      {
+        type: actionTypes.FETCH_TIMELINE,
+        payload: true,
+      },
+      {
+        type: actionTypes.ADD_TWEETS,
+        payload: response.data,
+      },
+    ];
+
+    const store = mockStore(INITIAL_STATE);
+
+    await store.dispatch(actions.fetchTimeline(token));
+
+    expect(store.getActions()).toEqual(expectedActions);
+  });
 });

@@ -23,4 +23,15 @@ describe('user module action creators', () => {
 
     expect(actions.setToken(token)).toEqual(expectedAction);
   });
+
+  it('should create an action to change the state of the loading in the user timeline', () => {
+    const value = true;
+
+    const expectedAction = {
+      type: actionTypes.REQUEST_TIMELINE,
+      payload: value,
+    };
+
+    expect(actions.requestTimeline(value)).toEqual(expectedAction);
+  });
 });

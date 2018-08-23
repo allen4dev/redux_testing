@@ -17,6 +17,13 @@ export function setToken(token) {
   };
 }
 
+export function requestTimeline(value) {
+  return {
+    type: actionTypes.REQUEST_TIMELINE,
+    payload: value,
+  };
+}
+
 // Async action creators
 
 export function login(email, password) {
@@ -39,4 +46,8 @@ export function register(information) {
 
     return results.data.token;
   };
+}
+
+export function fetchTimeline() {
+  return async dispatch => {};
 }

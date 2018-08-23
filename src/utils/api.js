@@ -22,6 +22,14 @@ const api = {
       return response;
     },
   },
+
+  tweets: {
+    async timeline(token) {
+      const response = await instance.get('me/timeline');
+
+      return response;
+    },
+  },
 };
 
 export default api;
