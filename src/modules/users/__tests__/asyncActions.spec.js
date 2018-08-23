@@ -6,7 +6,10 @@ import * as actions from '../actions';
 import * as actionTypes from '../actionTypes';
 import { INITIAL_STATE } from '../model';
 
+import tweetsModule from 'modules/tweets';
+
 import { instance } from 'utils/api';
+import { convertResults } from 'utils/helpers';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
@@ -93,20 +96,29 @@ describe('users module async actions', () => {
     expect(store.getActions()).toEqual(expectedActions);
   });
 
-  xit('should create a FETCH_TIMELINE, ADD_TWEETS actions after the user fetch his timeline', async () => {
-    // Given we have a valid token to identify us
+  it('should create a REQUEST_TIMELINE and ADD_TWEETS actions after the user fetch his timeline', async () => {
     const token = 'xxx-xxx-xxx';
     const response = {
-      data: {
-        type: 'tweets',
-        id: '1',
-        attributes: {
-          body: 'I am making a Twitter redesign',
+      data: [
+        {
+          type: 'tweets',
+          id: '1',
+          attributes: {
+            body: 'Tweet 1',
+          },
         },
-      },
+        {
+          type: 'tweets',
+          id: '2',
+          attributes: {
+            body: 'Tweet 2',
+          },
+        },
+      ],
     };
 
-    // When someone fetchs his timeline
+    const converted = convertResults(response);
+
     moxios.wait(() => {
       const request = moxios.requests.mostRecent();
 
@@ -116,17 +128,14 @@ describe('users module async actions', () => {
       });
     });
 
-    // Then we expect an action with type FETCH_TIMELINE and a value of true
-    // and other with a type ADD_TWEETS and a value with the fetched tweets
-    // to be dispatched
     const expectedActions = [
       {
-        type: actionTypes.FETCH_TIMELINE,
+        type: actionTypes.REQUEST_TIMELINE,
         payload: true,
       },
       {
-        type: actionTypes.ADD_TWEETS,
-        payload: response.data,
+        type: tweetsModule.actionTypes.ADD_TWEETS,
+        payload: { tweets: converted },
       },
     ];
 

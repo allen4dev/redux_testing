@@ -1,6 +1,9 @@
 import * as actionTypes from './actionTypes';
 
+import tweets from 'modules/tweets';
+
 import api from 'utils/api';
+import { convertResults } from 'utils/helpers';
 
 // Action creators
 export function setCurrentUser(id) {
@@ -49,5 +52,17 @@ export function register(information) {
 }
 
 export function fetchTimeline() {
-  return async dispatch => {};
+  return async (dispatch, getState) => {
+    dispatch(requestTimeline(true));
+
+    const { token } = getState().current;
+
+    const { data: results } = await api.tweets.fetchTimeline(token);
+
+    const tweetsById = convertResults(results);
+
+    dispatch(tweets.actions.addTweets(tweetsById));
+
+    return tweetsById;
+  };
 }

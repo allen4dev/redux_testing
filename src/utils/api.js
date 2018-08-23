@@ -24,7 +24,7 @@ const api = {
   },
 
   tweets: {
-    async timeline(token) {
+    async fetchTimeline(token) {
       const response = await instance.get('me/timeline');
 
       return response;
