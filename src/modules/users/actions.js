@@ -1,6 +1,6 @@
 import * as actionTypes from './actionTypes';
 
-import tweets from 'modules/tweets';
+import tweetsModule from 'modules/tweets';
 
 import api from 'utils/api';
 import { convertResults } from 'utils/helpers';
@@ -20,15 +20,20 @@ export function setToken(token) {
   };
 }
 
-export function requestTimeline(value) {
+export function requestTimeline() {
   return {
     type: actionTypes.REQUEST_TIMELINE,
-    payload: value,
+  };
+}
+
+export function addTweets(ids) {
+  return {
+    type: actionTypes.ADD_TWEETS,
+    payload: { ids },
   };
 }
 
 // Async action creators
-
 export function login(email, password) {
   return async dispatch => {
     const { data: results } = await api.auth.login({ email, password });
@@ -53,16 +58,18 @@ export function register(information) {
 
 export function fetchTimeline() {
   return async (dispatch, getState) => {
-    dispatch(requestTimeline(true));
+    dispatch(requestTimeline());
 
     const { token } = getState().current;
 
     const { data: results } = await api.tweets.fetchTimeline(token);
 
-    const tweetsById = convertResults(results);
+    const tweets = convertResults(results);
+    const ids = Object.keys(tweets);
 
-    dispatch(tweets.actions.addTweets(tweetsById));
+    dispatch(addTweets(ids));
+    dispatch(tweetsModule.actions.addTweets(tweets));
 
-    return tweetsById;
+    return tweets;
   };
 }

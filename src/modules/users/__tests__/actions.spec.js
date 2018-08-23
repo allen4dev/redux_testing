@@ -25,13 +25,21 @@ describe('user module action creators', () => {
   });
 
   it('should create an action to change the state of the loading in the user timeline', () => {
-    const value = true;
-
     const expectedAction = {
       type: actionTypes.REQUEST_TIMELINE,
-      payload: value,
     };
 
-    expect(actions.requestTimeline(value)).toEqual(expectedAction);
+    expect(actions.requestTimeline()).toEqual(expectedAction);
+  });
+
+  it('should create an action to add tweets in the user timeline', () => {
+    const ids = ['1', '2'];
+
+    const expectedAction = {
+      type: actionTypes.ADD_TWEETS,
+      payload: { ids },
+    };
+
+    expect(actions.addTweets(ids)).toEqual(expectedAction);
   });
 });

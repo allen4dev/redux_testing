@@ -96,7 +96,7 @@ describe('users module async actions', () => {
     expect(store.getActions()).toEqual(expectedActions);
   });
 
-  it('should create a REQUEST_TIMELINE and ADD_TWEETS actions after the user fetch his timeline', async () => {
+  it('should create a REQUEST_TIMELINE, ADD_TWEETS and tweetsModule.actionTypes.ADD_TWEETS actions after the user fetch his timeline', async () => {
     const token = 'xxx-xxx-xxx';
     const response = {
       data: [
@@ -118,6 +118,7 @@ describe('users module async actions', () => {
     };
 
     const converted = convertResults(response);
+    const ids = Object.keys(converted);
 
     moxios.wait(() => {
       const request = moxios.requests.mostRecent();
@@ -131,7 +132,10 @@ describe('users module async actions', () => {
     const expectedActions = [
       {
         type: actionTypes.REQUEST_TIMELINE,
-        payload: true,
+      },
+      {
+        type: actionTypes.ADD_TWEETS,
+        payload: { ids },
       },
       {
         type: tweetsModule.actionTypes.ADD_TWEETS,

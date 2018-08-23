@@ -3,5 +3,6 @@ export const INITIAL_STATE = {
     id: null,
     token: null,
     timeline: [],
+    loading: false,
   },
 };

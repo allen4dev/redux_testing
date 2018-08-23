@@ -17,6 +17,18 @@ function currentReducer(state = INITIAL_STATE.current, action) {
         token: action.payload.token,
       };
 
+    case actionTypes.REQUEST_TIMELINE:
+      return {
+        ...state,
+        loading: true,
+      };
+
+    case actionTypes.ADD_TWEETS:
+      return {
+        ...state,
+        timeline: [...state.timeline, ...action.payload.ids],
+      };
+
     default:
       return state;
   }
