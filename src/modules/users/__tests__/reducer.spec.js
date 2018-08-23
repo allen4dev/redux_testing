@@ -60,4 +60,19 @@ describe('current', () => {
       timeline: [...ids, ...newIds],
     });
   });
+
+  it('should also change the loading state to false after a successful ADD_TWEETS action', () => {
+    const ids = ['1', '2'];
+
+    const nextState = currentReducer(
+      { ...CURRENT_STATE, loading: true },
+      actions.addTweets(ids),
+    );
+
+    expect(nextState).toEqual({
+      ...CURRENT_STATE,
+      timeline: ids,
+      loading: false,
+    });
+  });
 });

@@ -35,6 +35,9 @@ function loadingReducer(state = INITIAL_STATE.current.loading, action) {
     case actionTypes.REQUEST_TIMELINE:
       return true;
 
+    case actionTypes.ADD_TWEETS:
+      return false;
+
     default:
       return state;
   }
