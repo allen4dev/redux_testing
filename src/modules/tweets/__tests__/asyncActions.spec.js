@@ -3,7 +3,8 @@ import thunk from 'redux-thunk';
 import moxios from 'moxios';
 
 import { instance } from 'utils/api';
-import { convertResult } from 'utils/helpers';
+
+import usersModule from 'modules/users';
 
 import * as actionTypes from '../actionTypes';
 import * as actions from '../actions';
@@ -21,7 +22,7 @@ describe('tweets module async actions', () => {
     moxios.uninstall(instance);
   });
 
-  it('should create an ADD_TWEET action after a user creates a tweet', async () => {
+  it('should create an ADD_TWEET and a users.actions.ADD_USER_TWEET  actions after a user creates a tweet', async () => {
     const token = 'xxx-xxx-xxx';
 
     const tweet = {
@@ -44,6 +45,10 @@ describe('tweets module async actions', () => {
       {
         type: actionTypes.ADD_TWEET,
         payload: { tweet },
+      },
+      {
+        type: usersModule.actionTypes.ADD_USER_TWEET,
+        payload: { id: tweet.id },
       },
     ];
 

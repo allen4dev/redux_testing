@@ -33,6 +33,13 @@ export function addTweets(ids) {
   };
 }
 
+export function addUserTweet(id) {
+  return {
+    type: actionTypes.ADD_USER_TWEET,
+    payload: { id },
+  };
+}
+
 // Async action creators
 export function login(email, password) {
   return async dispatch => {

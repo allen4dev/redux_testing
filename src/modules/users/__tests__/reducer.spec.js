@@ -3,6 +3,7 @@ import * as actions from '../actions';
 import { INITIAL_STATE } from '../model';
 
 import currentReducer from '../reducer/current';
+import tweetstReducer from '../reducer/tweets';
 
 test('@INIT', () => {
   expect(reducer(undefined, {})).toEqual(INITIAL_STATE);
@@ -74,5 +75,23 @@ describe('current', () => {
       timeline: ids,
       loading: false,
     });
+  });
+});
+
+describe.only('tweets', () => {
+  const TWEETS_STATE = INITIAL_STATE.tweets;
+
+  it('should handle ADD_USER_TWEET action', () => {
+    const id = '1';
+
+    const nextState = tweetstReducer(TWEETS_STATE, actions.addUserTweet(id));
+
+    expect(nextState).toEqual([...TWEETS_STATE, id]);
+
+    const newId = '2';
+
+    const newState = tweetstReducer(nextState, actions.addUserTweet(newId));
+
+    expect(newState).toEqual([...nextState, newId]);
   });
 });

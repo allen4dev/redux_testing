@@ -1,5 +1,8 @@
 import api from 'utils/api';
 import { convertResult } from 'utils/helpers';
+
+import usersModule from 'modules/users';
+
 import * as actionTypes from './actionTypes';
 
 // action creators
@@ -22,9 +25,12 @@ export function publishTweet(details) {
     const { token } = getState().users.current;
     const { data: result } = await api.tweets.publish(details, token);
 
+    const tweet = result.data;
+
     dispatch(addTweet(result.data));
+    dispatch(usersModule.actions.addUserTweet(tweet.id));
 
     // ToDo: Normalize with convertResults
-    return convertResult(result.data);
+    return convertResult(tweet);
   };
 }
