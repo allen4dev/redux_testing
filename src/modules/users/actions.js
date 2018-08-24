@@ -47,6 +47,13 @@ export function addUser(user) {
   };
 }
 
+export function addUsers(users) {
+  return {
+    type: actionTypes.ADD_USERS,
+    payload: { users },
+  };
+}
+
 // Async action creators
 export function login(email, password) {
   return async dispatch => {

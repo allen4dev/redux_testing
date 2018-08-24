@@ -13,6 +13,12 @@ function entitiesReducer(state = INITIAL_STATE.entities, action) {
         },
       };
 
+    case actionTypes.ADD_USERS:
+      return {
+        ...state,
+        ...action.payload.users,
+      };
+
     default:
       return state;
   }

@@ -25,6 +25,64 @@ describe('entities', () => {
       ...ENTITIES_STATE,
       [user.id]: { ...user },
     });
+
+    const newUser = {
+      id: '2',
+      attributes: { username: 'archer' },
+    };
+
+    const newState = entitiesReducer(nextState, actions.addUser(newUser));
+
+    expect(newState).toEqual({
+      ...nextState,
+      [newUser.id]: { ...newUser },
+    });
+  });
+
+  it('should handle ADD_USERS action', () => {
+    const users = {
+      '1': {
+        id: '1',
+        attributes: {
+          username: 'allen',
+        },
+      },
+      '2': {
+        id: '2',
+        attributes: {
+          username: 'archer',
+        },
+      },
+    };
+
+    const nextState = entitiesReducer(ENTITIES_STATE, actions.addUsers(users));
+
+    expect(nextState).toEqual({
+      ...ENTITIES_STATE,
+      ...users,
+    });
+
+    const newUsers = {
+      '3': {
+        id: '3',
+        attributes: {
+          username: 'yatogami',
+        },
+      },
+      '4': {
+        id: '4',
+        attributes: {
+          username: 'Emiya',
+        },
+      },
+    };
+
+    const newState = entitiesReducer(nextState, actions.addUsers(newUsers));
+
+    expect(newState).toEqual({
+      ...nextState,
+      ...newUsers,
+    });
   });
 });
 

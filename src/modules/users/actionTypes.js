@@ -8,3 +8,4 @@ export const ADD_TWEETS = `${NAME}/ADD_TWEETS`;
 export const ADD_USER_TWEET = `${NAME}/ADD_USER_TWEET`;
 
 export const ADD_USER = `${NAME}/ADD_USER`;
+export const ADD_USERS = `${NAME}/ADD_USERS`;
