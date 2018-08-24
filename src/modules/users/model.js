@@ -5,5 +5,7 @@ export const INITIAL_STATE = {
     timeline: [],
     loading: false,
   },
-  tweets: [],
+  tweets: {
+    byId: {},
+  },
 };

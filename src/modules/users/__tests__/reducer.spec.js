@@ -78,20 +78,41 @@ describe('current', () => {
   });
 });
 
-describe.only('tweets', () => {
+describe('tweets', () => {
   const TWEETS_STATE = INITIAL_STATE.tweets;
 
   it('should handle ADD_USER_TWEET action', () => {
-    const id = '1';
+    const user1 = {
+      id: '1',
+      tweet: '1',
+    };
 
-    const nextState = tweetstReducer(TWEETS_STATE, actions.addUserTweet(id));
+    const nextState = tweetstReducer(
+      TWEETS_STATE,
+      actions.addUserTweet(user1.id, user1.tweet),
+    );
 
-    expect(nextState).toEqual([...TWEETS_STATE, id]);
+    expect(nextState).toEqual({
+      ...TWEETS_STATE,
+      byId: { [user1.id]: user1.tweet },
+    });
 
-    const newId = '2';
+    const user2 = {
+      id: '2',
+      tweet: '5',
+    };
 
-    const newState = tweetstReducer(nextState, actions.addUserTweet(newId));
+    const newState = tweetstReducer(
+      nextState,
+      actions.addUserTweet(user2.id, user2.tweet),
+    );
 
-    expect(newState).toEqual([...nextState, newId]);
+    expect(newState).toEqual({
+      ...nextState,
+      byId: {
+        ...nextState.byId,
+        [user2.id]: user2.tweet,
+      },
+    });
   });
 });

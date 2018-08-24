@@ -45,12 +45,13 @@ describe('user module action creators', () => {
 
   it('should create an action to add a tweet for a user', () => {
     const id = '1';
+    const tweet = '1';
 
     const expectedAction = {
       type: actionTypes.ADD_USER_TWEET,
-      payload: { id },
+      payload: { id, tweet },
     };
 
-    expect(actions.addUserTweet(id)).toEqual(expectedAction);
+    expect(actions.addUserTweet(id, tweet)).toEqual(expectedAction);
   });
 });

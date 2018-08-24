@@ -1,14 +1,22 @@
 import * as actionTypes from '../actionTypes';
 import { INITIAL_STATE } from '../model';
+import { combineReducers } from '../../../../../../../../../Library/Caches/typescript/3.0/node_modules/redux';
 
-function tweetsReducer(state = INITIAL_STATE.tweets, action) {
+function byIdReducer(state = INITIAL_STATE.tweets.byId, action) {
   switch (action.type) {
     case actionTypes.ADD_USER_TWEET:
-      return [...state, action.payload.id];
+      return {
+        ...state,
+        [action.payload.id]: action.payload.tweet,
+      };
 
     default:
       return state;
   }
 }
+
+const tweetsReducer = combineReducers({
+  byId: byIdReducer,
+});
 
 export default tweetsReducer;

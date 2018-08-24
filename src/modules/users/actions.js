@@ -33,10 +33,10 @@ export function addTweets(ids) {
   };
 }
 
-export function addUserTweet(id) {
+export function addUserTweet(id, tweetId) {
   return {
     type: actionTypes.ADD_USER_TWEET,
-    payload: { id },
+    payload: { id, tweet: tweetId },
   };
 }
 
