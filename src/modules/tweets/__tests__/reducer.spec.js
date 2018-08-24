@@ -40,4 +40,20 @@ describe('entities', () => {
       ...newTweets,
     });
   });
+
+  it('should handle ADD_TWEET action', () => {
+    const tweet = {
+      id: '1',
+      attributes: {
+        body: 'Tweet 1',
+      },
+    };
+
+    const nextState = entitiesReducer(ENTITIES_STATE, actions.addTweet(tweet));
+
+    expect(nextState).toEqual({
+      ...ENTITIES_STATE,
+      [tweet.id]: { ...tweet },
+    });
+  });
 });

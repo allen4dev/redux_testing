@@ -134,12 +134,12 @@ describe('users module async actions', () => {
         type: actionTypes.REQUEST_TIMELINE,
       },
       {
-        type: actionTypes.ADD_TWEETS,
-        payload: { ids },
-      },
-      {
         type: tweetsModule.actionTypes.ADD_TWEETS,
         payload: { tweets: converted },
+      },
+      {
+        type: actionTypes.ADD_TWEETS,
+        payload: { ids },
       },
     ];
 

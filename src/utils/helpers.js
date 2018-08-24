@@ -9,3 +9,11 @@ export function convertResults(results) {
     {},
   );
 }
+
+export function convertResult(result) {
+  return {
+    [result.id]: {
+      ...result,
+    },
+  };
+}

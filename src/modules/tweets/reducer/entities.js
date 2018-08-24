@@ -9,6 +9,12 @@ function entitiesReducer(state = INITIAL_STATE.entities, action) {
         ...action.payload.tweets,
       };
 
+    case actionTypes.ADD_TWEET:
+      return {
+        ...state,
+        [action.payload.tweet.id]: { ...action.payload.tweet },
+      };
+
     default:
       return state;
   }
