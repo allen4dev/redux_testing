@@ -3,6 +3,7 @@ import thunk from 'redux-thunk';
 import moxios from 'moxios';
 
 import { instance } from 'utils/api';
+import { convertResults } from 'utils/helpers';
 
 import * as actionTypes from '../actionTypes';
 import * as actions from '../actions';
@@ -20,21 +21,50 @@ describe('replies module async actions', () => {
     moxios.uninstall(instance);
   });
 
-  it('should pass', async () => {
-    const token = 'xxx-xxx-xxx';
+  it('should create an ADD_REPLIES action after visit a tweet', async () => {
+    const response = {
+      data: [
+        {
+          type: 'replies',
+          id: '1',
+          attributes: {
+            body: 'Reply 1',
+          },
+        },
+        {
+          type: 'replies',
+          id: '2',
+          attributes: {
+            body: 'Reply 2',
+          },
+        },
+      ],
+    };
 
     moxios.wait(() => {
       const request = moxios.requests.mostRecent();
 
       request.respondWith({
         status: 200,
-        response: { data: 'hey' },
+        response,
       });
     });
 
     const store = mockStore({
       ...INITIAL_STATE,
-      users: { current: { token } },
     });
+
+    const tweetId = '1';
+
+    const expectedActions = [
+      {
+        type: actionTypes.ADD_REPLIES,
+        payload: { replies: convertResults(response) },
+      },
+    ];
+
+    await store.dispatch(actions.fetchTweetReplies(tweetId));
+
+    expect(store.getActions()).toEqual(expectedActions);
   });
 });

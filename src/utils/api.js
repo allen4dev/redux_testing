@@ -39,6 +39,12 @@ const api = {
 
       return response;
     },
+
+    async fetchTweetReplies(id) {
+      const response = await instance.get(`tweets/${id}`);
+
+      return response;
+    },
   },
 };
 
