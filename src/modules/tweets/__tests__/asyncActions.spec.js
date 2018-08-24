@@ -22,6 +22,8 @@ describe('tweets module async actions', () => {
   });
 
   it('should create an ADD_TWEET action after a user creates a tweet', async () => {
+    const token = 'xxx-xxx-xxx';
+
     const tweet = {
       id: '1',
       attributes: {
@@ -45,7 +47,10 @@ describe('tweets module async actions', () => {
       },
     ];
 
-    const store = mockStore(INITIAL_STATE);
+    const store = mockStore({
+      ...INITIAL_STATE,
+      users: { current: { token } },
+    });
 
     await store.dispatch(actions.publishTweet({ body: tweet.attributes.body }));
 

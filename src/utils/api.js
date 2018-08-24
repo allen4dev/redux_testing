@@ -31,6 +31,14 @@ const api = {
 
       return response;
     },
+
+    async publish(details, token) {
+      const response = await instance.post('tweets', details, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      return response;
+    },
   },
 };
 

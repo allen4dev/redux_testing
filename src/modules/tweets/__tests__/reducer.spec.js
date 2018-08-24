@@ -55,5 +55,19 @@ describe('entities', () => {
       ...ENTITIES_STATE,
       [tweet.id]: { ...tweet },
     });
+
+    const newTweet = {
+      id: '2',
+      attributes: {
+        body: 'Tweet 2',
+      },
+    };
+
+    const newState = entitiesReducer(nextState, actions.addTweet(newTweet));
+
+    expect(newState).toEqual({
+      ...nextState,
+      [newTweet.id]: { ...newTweet },
+    });
   });
 });

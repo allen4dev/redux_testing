@@ -1,3 +1,5 @@
+import api from 'utils/api';
+import { convertResult } from 'utils/helpers';
 import * as actionTypes from './actionTypes';
 
 // action creators
@@ -16,8 +18,13 @@ export function addTweet(tweet) {
 }
 
 export function publishTweet(details) {
-  return async dispatch => {
-    // ToDo: implementation
-    dispatch(addTweet({ id: '1', attributes: { body: details.body } }));
+  return async (dispatch, getState) => {
+    const { token } = getState().users.current;
+    const { data: result } = await api.tweets.publish(details, token);
+
+    dispatch(addTweet(result.data));
+
+    // ToDo: Normalize with convertResults
+    return convertResult(result.data);
   };
 }
