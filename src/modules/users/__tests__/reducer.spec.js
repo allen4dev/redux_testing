@@ -4,9 +4,28 @@ import { INITIAL_STATE } from '../model';
 
 import currentReducer from '../reducer/current';
 import tweetstReducer from '../reducer/tweets';
+import entitiesReducer from '../reducer/entities';
 
 test('@INIT', () => {
   expect(reducer(undefined, {})).toEqual(INITIAL_STATE);
+});
+
+describe('entities', () => {
+  const ENTITIES_STATE = INITIAL_STATE.entities;
+
+  it('should handle ADD_USER action', () => {
+    const user = {
+      id: '1',
+      attributes: { username: 'allen' },
+    };
+
+    const nextState = entitiesReducer(ENTITIES_STATE, actions.addUser(user));
+
+    expect(nextState).toEqual({
+      ...ENTITIES_STATE,
+      [user.id]: { ...user },
+    });
+  });
 });
 
 describe('current', () => {

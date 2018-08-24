@@ -40,6 +40,13 @@ export function addUserTweet(id, tweetId) {
   };
 }
 
+export function addUser(user) {
+  return {
+    type: actionTypes.ADD_USER,
+    payload: { user },
+  };
+}
+
 // Async action creators
 export function login(email, password) {
   return async dispatch => {

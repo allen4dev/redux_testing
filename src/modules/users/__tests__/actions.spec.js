@@ -54,4 +54,21 @@ describe('user module action creators', () => {
 
     expect(actions.addUserTweet(id, tweet)).toEqual(expectedAction);
   });
+
+  it('should create an action to add a user on the entities', () => {
+    const user = {
+      type: 'users',
+      id: '1',
+      attributes: {
+        username: 'allen',
+      },
+    };
+
+    const expectedAction = {
+      type: actionTypes.ADD_USER,
+      payload: { user },
+    };
+
+    expect(actions.addUser(user)).toEqual(expectedAction);
+  });
 });
