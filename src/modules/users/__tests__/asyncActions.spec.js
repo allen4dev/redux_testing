@@ -157,4 +157,65 @@ describe('users module async actions', () => {
 
     expect(store.getActions()).toEqual(expectedActions);
   });
+
+  it('should create a REQUEST_USER_TWEETS, ADD_USER_TWEETS and tweetsModule.actionTypes.ADD_TWEETS actions after fetch a user profile', async () => {
+    const response = {
+      data: [
+        {
+          type: 'tweets',
+          id: '1',
+          attributes: {
+            body: 'Tweet 1',
+          },
+        },
+        {
+          type: 'tweets',
+          id: '2',
+          attributes: {
+            body: 'Tweet 2',
+          },
+        },
+      ],
+    };
+
+    const converted = convertResults(response);
+    const ids = Object.keys(converted);
+
+    moxios.wait(() => {
+      const request = moxios.requests.mostRecent();
+
+      request.respondWith({
+        status: 200,
+        response,
+      });
+    });
+
+    const expectedActions = [
+      {
+        type: actionTypes.REQUEST_USER_TWEETS,
+      },
+      {
+        type: tweetsModule.actionTypes.ADD_TWEETS,
+        payload: { tweets: converted },
+      },
+      {
+        type: actionTypes.ADD_USER_TWEETS,
+        payload: { id: ids },
+      },
+    ];
+
+    const store = mockStore({
+      users: {
+        ...INITIAL_STATE,
+        current: {
+          ...INITIAL_STATE.current,
+          token,
+        },
+      },
+    });
+
+    await store.dispatch(actions.fetchTimeline(token));
+
+    expect(store.getActions()).toEqual(expectedActions);
+  });
 });
